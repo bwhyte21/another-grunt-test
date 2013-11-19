@@ -1,3 +1,7 @@
+var bower = require('bower');
+var fs = require('fs');
+var bowerJson = JSON.parse(fs.readFileSync('bower.json'))
+var wiredep = require('wiredep');
 module.exports = function(grunt) {
 
 	//grunt stuff goes here
@@ -47,14 +51,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	//grunt.loadNpmTasks)'grunt-contrib-cssmin');
+	//grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 	//default tasks to run
 	grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
 	grunt.registerTask('deploy', ['uglify']);
 	grunt.registerTask('sniff', ['jshint']);
 
-	grunt.registerTask('scratch', function(name){ //grunt scratch:folderName
+	grunt.registerTask('scratch', function(name) { //grunt scratch:folderName
 		grunt.log.writeln('Scratching...');
 		var wxdesk = name + '/wxdesk';
 		var vendor = name + '/vendor';
@@ -70,6 +74,18 @@ module.exports = function(grunt) {
 		grunt.file.write(name +'/main.css');
 		grunt.log.writeln('Scratching complete!');
 
+	});
+	grunt.registerTask('mate', function() {
+		bower.commands
+	.install(['test-mod'], { save: true })
+	.on('end', function (installed) {
+		console.log(installed);
+		});
+	bower.commands
+	.search('test-mod')
+	.on('end', function (results) {
+		console.log(results);
+		});
 	});
 
 };
