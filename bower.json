@@ -1,11 +1,12 @@
 {
   "name": "another-grunt-test",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "early bower import test",
   "main": "./vendor/html5bp/normalize.css",
   "ignore": [
   "**/.",
-  "*.md"
+  "*.md",
+  "index.html"
   ],
   "dest": "vendor"
 }
