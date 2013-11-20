@@ -6,8 +6,7 @@
   "ignore": [
   "**/.",
   "*.md",
-  "index.html",
-  "Gruntfile.js"
+  "index.html"
   ],
   "dest": "vendor"
 }
